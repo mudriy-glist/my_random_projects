@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Home</title>
+        <script>
+            
+            function hello() {
+                // can put HTML-elements in variable
+                //instead of 'let', 'const' can be used. JS won't let you change/reassign const-variable
+                let heading = document.querySelector('h1');
+                // use them to reduce amount of code
+                if (heading.innerHTML === "CS50 TEST") {
+                    document.querySelector('h1').innerHTML = "Modified";
+                } else if (document.querySelector('h1').innerHTML === "Modified") {
+                    document.querySelector('h1').innerHTML = "Null active";
+                } else {
+                    document.querySelector('h1').innerHTML = "CS50 TEST";
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <h1>CS50 TEST</h1>
+        <button onclick="hello()">Modify</button>
+    </body>
+</html>
