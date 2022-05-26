@@ -6,8 +6,8 @@
 
             document.addEventListener('DOMContentLoaded', function() {
 
-                // Change font color to red
-                document.querySelectorAll('button').forEach(function(button) {
+                // Change font color to red                  // Insread of function(button)
+                document.querySelectorAll('button').forEach(button => {
                     button.onclick = function() {
                         document.querySelector('#hello').style.color = button.dataset.color;
                     }
