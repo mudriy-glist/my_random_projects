@@ -1,6 +1,9 @@
 #taken for learning and testing purposes from https://stackabuse.com/python-linked-lists/
 #thanks a lot to a creator of this website;D
 
+from doctest import OutputChecker
+
+
 class ListNode:
     def __init__(self, data):
         "constructor to initiate this object"
@@ -94,16 +97,38 @@ class SingleLinkedList:
         
         return results
 
+    def remove_list_item_by_id(self, item_id):
+        "remove the list item with the item id"
+
+        current_id = 1
+        current_node = self.head
+        previous_node = None
+
+        while current_node is not None:
+            if current_id == item_id:
+                #if this is the first node (head)
+                if previous_node is not None:
+                    previous_node.next = current_node.next
+                else:
+                    self.head = current_node.next
+                    #we don't have to look any further
+                    return
+            
+            #needed for the next iteration
+            previous_node = current_node
+            current_node = current_node.next
+            current_id += 1
+    
+    
+
 #creating nodes
-node1 = ListNode(15)
-node2 = ListNode(8.5)
-node3 = ListNode("Berlin")
-node4 = ListNode(35)
+list1 = ListNode([1,2,4])
+list2 = ListNode([1,3,4])
 
 track = SingleLinkedList()
-print("track length: %i" % track.list_length())
-
-for current_item in [node1, node2, node3, node4]:
+print("List: ")
+for current_item in [list1, list2]:
     track.add_list_item(current_item)
-    print("track length: %i" % track.list_length())
-    track.output_list()
+
+track.merge_lists(list1, list2)
+
