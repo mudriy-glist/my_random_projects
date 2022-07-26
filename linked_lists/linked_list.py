@@ -1,9 +1,6 @@
 #taken for learning and testing purposes from https://stackabuse.com/python-linked-lists/
 #thanks a lot to a creator of this website;D
 
-from doctest import OutputChecker
-
-
 class ListNode:
     def __init__(self, data):
         "constructor to initiate this object"
@@ -122,13 +119,7 @@ class SingleLinkedList:
     
 
 #creating nodes
-list1 = ListNode([1,2,4])
-list2 = ListNode([1,3,4])
+head = ListNode([1,1,2,3,3])
 
-track = SingleLinkedList()
-print("List: ")
-for current_item in [list1, list2]:
-    track.add_list_item(current_item)
 
-track.merge_lists(list1, list2)
 
