@@ -1,12 +1,19 @@
-def fib(n):
-    if n == 1:
-        return [1]
-    if n == 2:
-        return [1, 1]
-    fibs = [1, 1]
-    for _ in range(2, n):
-        fibs.append(fibs[-1] + fibs[-2])
-    return fibs
-
-var = fib(5)
-print(max(var))
+class Solution(object):
+    def climbStairs(self, n):
+        """
+        :type n: int
+        :rtype: int
+        """
+        first_num = 1
+        second_num = 2
+        num_of_terms = n
+        if n == 1:
+            return 1
+        if n == 2:
+            return 2
+        while(num_of_terms-2):
+            third_num = first_num + second_num
+            first_num=second_num
+            second_num=third_num
+            num_of_terms=num_of_terms-1
+        return third_num
