@@ -105,11 +105,19 @@ class Node:
             return max_depth
         
         return min_depth
+    def PathSum(self, root, target_num):
+        if root is None and target_num != 0:
+            return False
+        
+        left_travers = self.PathSum(root.left) + root.data
+        right_travers = self.PathSum(root.right) + root.data
+        print(sum(left_travers))
+        print(sum(right_travers))
     
-root_list = [2,None,3,None,4,None,5,None,6]
-root = Node()
+root_list = [4,8,11,None,13,4,7,2,None,None,None,1]
+root = Node(5)
 for r in root_list:
     root.insert(r)
 
-var = root.MinimumDepth(root)
+var = root.PreorderTraversal(root)
 print(var)
