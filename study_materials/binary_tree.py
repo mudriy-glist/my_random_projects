@@ -1,3 +1,6 @@
+from multiprocessing.dummy import Value
+
+
 class Node:
     def __init__(self, data):
         self.left = None
@@ -26,6 +29,8 @@ class Node:
       print( self.data),
       if self.right:
          self.right.PrintTree()
+
+    
     # Inorder traversal
     # Left -> Root -> Right
     def inorderTraversal(self, root):
@@ -53,10 +58,36 @@ class Node:
             res = res + self.PostorderTraversal(root.right)
             res.append(root.data)
         return res
-root = Node(12)
-root.insert(5)
-root.insert(15)
-root.insert(7)
-root.insert(17)
-root.PrintTree()
-root.inorderTraversal(root)
+    def ReturnLeft(self, root):
+        res_left = []
+        if root:
+            res_left = self.ReturnLeft(root.left)
+            res_left.append(root.data)
+        return res_left
+    
+    def ReturnRight(self, root):
+        res_right = []
+        if root:
+            res_right = self.ReturnRight(root.right)
+            res_right.append(root.data)
+        return res_right
+    # def MaximumDepth(self, root):
+    #     val_l = len(root.ReturnLeft(root))
+    #     val_r = len(root.ReturnRight(root))
+    #     if val_l > val_r:
+    #         return val_l
+    #     elif val_r > val_l:
+    #         return val_r
+    
+    def MaximumDepth(self, root):
+        if root is None:
+            return 0
+        return max(self.MaximumDepth(root.left), self.MaximumDepth(root.right)) + 1
+    
+root_list = [24, 13, 55, None, 14, 15]
+root = Node(root_list.pop(0))
+for r in root_list:
+    root.insert(r)
+
+val = root.MaximumDepth(root)
+print(val)
