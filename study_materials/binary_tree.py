@@ -93,11 +93,23 @@ class Node:
         if (abs(left_height - right_height) <= 1) and self.is_balanced(root.left) is True and self.is_balanced(root.right) is True:
             return True
         return False
+    def MinimumDepth(self, root):
+        if root is None:
+            return 0
+        left = self.MinimumDepth(root.left)
+        right = self.MinimumDepth(root.right)
+        
+        min_depth = min(left, right) + 1
+        max_depth = max(left, right) + 1
+        if min_depth == 0:
+            return max_depth
+        
+        return min_depth
     
-root_list = [3,9,20,None,None,15,7]
+root_list = [2,None,3,None,4,None,5,None,6]
 root = Node()
 for r in root_list:
     root.insert(r)
 
-val = root.is_balanced(root)
-print(val)
+var = root.MinimumDepth(root)
+print(var)
